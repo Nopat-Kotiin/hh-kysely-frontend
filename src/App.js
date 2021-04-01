@@ -4,23 +4,24 @@ import './App.css';
 import DataService from './components/DataService';
 
 function App() {
-  const [data, setData] = useState("");
-  const [loading, setLoading] = useState(true);
+  const [data, setData] = useState([]);
 
   useEffect(()=> {
-    DataService.getData("/kysely")
+    DataService.getData("/kyselyt")
     .then(response => response.json())
-    .then(data => setData(data))
+    .then(data => {
+      setData(data);
+    })
     .catch(error => {
       console.log(error);
-      setData("Lataaminen epäonnistui");
-      setLoading(false);
     });
   },[])
 
   return (
     <div className="App">
-      {loading? <p>lataa</p> : <p>{data}</p>}
+      {data.map((row) => {
+        return(<p>{row.kyselyId} - {row.nimi}</p>)
+      })}
     </div>
   );
 }
