@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 
 import './App.css';
 import DataService from './components/DataService';
+import Survey from './components/Survey';
 
 function App() {
   const [data, setData] = useState([]);
