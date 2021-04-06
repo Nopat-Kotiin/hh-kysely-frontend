@@ -1,19 +1,21 @@
 import { useEffect, useState } from "react";
+import { useParams } from 'react-router';
 
 import DataService from './DataService';
 
 
-const Survey = (props) => {
+const Survey = () => {
   const [questions, setQuestions] = useState([]);
   const [name, setName] = useState("");
+  const params = useParams();
 
   useEffect(() => {
-    DataService.getData("/kyselyt/" + props.id)
+    DataService.getData("/survey/" + params.id)
       .then(response => response.json())
       .then(data => {
         console.log(data);
         setQuestions(data.kysymykset);
-        setName(data.name);
+        setName(data.nimi);
       })
   }, [])
 

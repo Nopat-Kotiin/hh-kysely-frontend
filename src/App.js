@@ -1,36 +1,38 @@
 import React, { useState, useEffect } from 'react';
+import { BrowserRouter as Router, Link, Route } from "react-router-dom";
 
 import './App.css';
 import DataService from './components/DataService';
 import Survey from './components/Survey';
+import SurveyList from './components/SurveyList';
 
 function App() {
   const [data, setData] = useState([]);
 
-  useEffect(()=> {
+  useEffect(() => {
     DataService.getData("/kyselyt")
-    .then(response => response.json())
-    .then(data => {
-      console.log(data);
-      setData(data);
-    })
-    .catch(error => {
-      console.log(error);
-    });
-  },[])
+      .then(response => response.json())
+      .then(data => {
+        console.log(data);
+        setData(data);
+      })
+      .catch(error => {
+        console.log(error);
+      });
+  }, [])
 
   return (
     <div className="App">
-      {data.map((row) => {
-        return(
+      <Router>
+
         <div>
-        <h2 key={row.id}>{row.nimi}</h2>
-        {row.kysymykset.map((kysymys) => {
-          return(<p key={kysymys.id}>{kysymys.kysymys}</p>)
-        })}
+          <Route exact path="/" render={() => <SurveyList data={data} />} />
+          <Route 
+            path="/survey/:id"
+            render={() => <Survey />}
+          />
         </div>
-        )
-      })}
+      </Router>
     </div>
   );
 }
