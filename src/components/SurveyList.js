@@ -5,7 +5,7 @@ const SurveyList = (props) => {
       {props.data.map((row) => {
           return (
             <div>
-              <a href={"/survey/" + row.id}><h2 key={row.id} >{row.nimi}</h2></a>
+              <a href={"/survey/" + row.id}><h2 key={row.id} >{row.name}</h2></a>
             </div>
           )
         })}

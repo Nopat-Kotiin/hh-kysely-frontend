@@ -14,8 +14,8 @@ const Survey = () => {
       .then(response => response.json())
       .then(data => {
         console.log(data);
-        setQuestions(data.kysymykset);
-        setName(data.nimi);
+        setQuestions(data.questions);
+        setName(data.name);
       })
   }, [])
 
@@ -25,7 +25,7 @@ const Survey = () => {
         {name}
       </h2>
       {questions.map(question => {
-        return(<p key={question.id}>{question.kysymys}</p>)
+        return(<p key={question.id}>{question.question}</p>)
       })}
     </div>
   )
