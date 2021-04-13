@@ -1,4 +1,4 @@
-const API_URL = "https://nopatkotiin-kysely.herokuapp.com/";
+const API_URL = "https://nopatkotiin-kysely-backend.herokuapp.com/";
 
 class DataService {
 
