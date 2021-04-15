@@ -1,4 +1,4 @@
-const SurveyList = (props) => {
+function SurveyList(props) {
 
   return (
     <div>
