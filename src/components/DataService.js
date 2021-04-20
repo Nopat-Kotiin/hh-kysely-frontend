@@ -1,5 +1,4 @@
-const API_URL = "https://nopatkotiin-kysely-backend.herokuapp.com";
-
+const API_URL = process.env.REACT_APP_API_URL;
 class DataService {
 
     async getData(url) {
