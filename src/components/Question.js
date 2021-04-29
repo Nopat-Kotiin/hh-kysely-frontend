@@ -14,7 +14,6 @@ function Question(props) {
   }, []);
 
   const updateAnswer = (answer) => {
-    // TODO
     props.update(answer, props.index);
   }
 

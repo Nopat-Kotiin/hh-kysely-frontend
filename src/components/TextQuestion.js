@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import TextAreaAutosize from 'react-textarea-autosize';
 
 function TextQuestion(props) {

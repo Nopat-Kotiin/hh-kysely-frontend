@@ -24,15 +24,23 @@ function Survey() {
   }, []);
 
   const updateAnswers = (answer, index) => {
-    console.log(answer, index);
     let newArr = [...answers];
     newArr[index] = answer;
     setAnswers(newArr);
   }
 
   const submitAnswers = () => {
-    console.log(answers);
-    // TODO
+    const body = [];
+    questions.forEach((q, index) => {
+      if (q.type !== 'text') {
+        body.push({'answer': '', 'selections': answers[index]});
+      } else {
+        body.push({'answer': answers[index]});
+      }
+    });
+    console.log(body);
+    // TODO: 
+    DataService.postAnswers(body, '/surveys/1/answers');
   }
 
   return (

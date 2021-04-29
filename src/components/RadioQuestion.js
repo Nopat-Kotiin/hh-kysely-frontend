@@ -1,7 +1,6 @@
 import { useEffect, useState } from "react";
 
 function RadioQuestion(props) {
-  const [answer, setAnswer] = useState(0);
   const [choices, setChoices] = useState([]);
   const [question, setQuestion] = useState('');
 
@@ -11,9 +10,8 @@ function RadioQuestion(props) {
   }, []);
 
   const inputChanged = (event) => {
-    const value = event.target.value;
-    setAnswer(parseInt(value));
-    props.update(value);
+    const value = parseInt(event.target.value);
+    props.update([value]);
   }
 
   return (
