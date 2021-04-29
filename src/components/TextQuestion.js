@@ -1,33 +1,25 @@
 import { useEffect, useState } from "react";
 import TextAreaAutosize from 'react-textarea-autosize';
 
-function Question(props) {
-  const [question, setQuestion] = useState('');
+function TextQuestion(props) {
   const [answer, setAnswer] = useState('');
-
-  useEffect(() => {
-    setQuestion(props.name);
-  }, []);
 
   const inputChanged = (event) => {
     setAnswer(event.target.value);
+    props.update(answer);
   }
 
   return (
     <div>
-      <h3>{question}</h3>
-
       <TextAreaAutosize
         onChange={inputChanged}
         value={answer}
         style={{width: "30%"}}
         minRows={3}
-        
+
       />
-      
-    </div>
-    
+    </div> 
   );
 }
 
-export default Question;
+export default TextQuestion;

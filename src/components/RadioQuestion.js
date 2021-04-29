@@ -1,35 +1,26 @@
 import { useEffect, useState } from "react";
-import TextAreaAutosize from 'react-textarea-autosize';
 
-function Question(props) {
-  const [question, setQuestion] = useState(props.question);
-  const [answer, setAnswer] = useState('');
+function RadioQuestion(props) {
+  const [answer, setAnswer] = useState(0);
+  const [choices, setChoices] = useState([]);
+  const [question, setQuestion] = useState('');
 
   useEffect(() => {
-    setQuestion({...question, answers: [{answer: answer}]});
-    props.update(question, props.index);
-  }, [answer]);
+    setChoices(props.choices);
+    setQuestion(props.question);
+  }, []);
 
   const inputChanged = (event) => {
     setAnswer(event.target.value);
-    setQuestion({...question, answers: [{answer: event.target.value}]});
   }
 
   return (
-    <div>
-      <h3 key={question.id}>{question.question}</h3>
-
-      <TextAreaAutosize
-        onChange={inputChanged}
-        value={answer}
-        style={{width: "30%"}}
-        minRows={3}
-        
-      />
-      
-    </div>
-    
+    <div onChange={inputChanged}>
+      {choices.map((choice, index) => {
+        return(<p><input type="radio" value={index} name={question} />{choice}</p>)
+      })}
+    </div> 
   );
 }
 
-export default Question;
+export default RadioQuestion;
