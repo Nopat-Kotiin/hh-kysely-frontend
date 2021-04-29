@@ -9,6 +9,7 @@ function Survey() {
   const [questions, setQuestions] = useState([]);
   const [answers, setAnswers] = useState([]);
   const [name, setName] = useState("");
+  const [info, setInfo] = useState("");
   const params = useParams();
 
   useEffect(() => {
@@ -17,6 +18,7 @@ function Survey() {
       .then(data => {
         setQuestions(data.questions);
         setName(data.name);
+        setInfo(data.info);
       })
       .catch(err => console.log(err));
   }, []);
@@ -38,6 +40,9 @@ function Survey() {
       <h2>
         {name}
       </h2>
+      <div>
+        {info}
+      </div>
       {questions.map((question, index) => {
         return(<Question question={question} index={index} update={updateAnswers}/>)
       })}
