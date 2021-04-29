@@ -11,11 +11,16 @@ function CheckboxQuestion(props) {
   }, []);
 
   const inputChanged = (event) => {
+    const value = parseInt(event.target.value);
+    let newArr = [];
     if (event.target.checked) {
-      setAnswers([...answers, parseInt(event.target.value)]);
+      newArr = [...answers, value];
+      setAnswers(newArr);
     } else {
-      setAnswers(answers.filter((item) =>  item != event.target.value));
+      newArr = answers.filter((item) =>  item != value);
+      setAnswers(newArr);
     }
+    props.update(newArr);
   }
 
   return (

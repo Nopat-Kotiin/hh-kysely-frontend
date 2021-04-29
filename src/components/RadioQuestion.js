@@ -11,7 +11,9 @@ function RadioQuestion(props) {
   }, []);
 
   const inputChanged = (event) => {
-    setAnswer(event.target.value);
+    const value = event.target.value;
+    setAnswer(parseInt(value));
+    props.update(value);
   }
 
   return (

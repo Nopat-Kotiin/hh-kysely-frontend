@@ -7,6 +7,7 @@ import Question from './Question';
 
 function Survey() {
   const [questions, setQuestions] = useState([]);
+  const [answers, setAnswers] = useState([]);
   const [name, setName] = useState("");
   const params = useParams();
 
@@ -18,22 +19,18 @@ function Survey() {
         setName(data.name);
       })
       .catch(err => console.log(err));
-  }, [])
+  }, []);
 
-  const updateQuestions = (question, index) => {
-    let newArr = [...questions];
-    newArr[index] = question;
-    setQuestions(newArr);
+  const updateAnswers = (answer, index) => {
+    console.log(answer, index);
+    let newArr = [...answers];
+    newArr[index] = answer;
+    setAnswers(newArr);
   }
 
   const submitAnswers = () => {
-    const body = {
-      id: parseInt(params.id),
-      questions: questions
-    }
-    DataService.postAnswers(body, "/submit")
-    .then(resp => console.log(resp))
-    .catch(err => console.log(err));
+    console.log(answers);
+    // TODO
   }
 
   return (
@@ -42,7 +39,7 @@ function Survey() {
         {name}
       </h2>
       {questions.map((question, index) => {
-        return(<Question question={question} index={index} update={updateQuestions}/>)
+        return(<Question question={question} index={index} update={updateAnswers}/>)
       })}
       <button onClick={submitAnswers}>submit</button>
     </div>

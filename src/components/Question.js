@@ -6,7 +6,6 @@ import CheckboxQuestion from './CheckboxQuestion';
 
 function Question(props) {
   const [question, setQuestion] = useState('');
-  const [answer, setAnswer] = useState('');
   const [type, setType] = useState('');
 
   useEffect(() => {
@@ -14,16 +13,17 @@ function Question(props) {
     setType(props.question.type);
   }, []);
 
-  const updateAnswer = (value) => {
-    setAnswer(value);
+  const updateAnswer = (answer) => {
+    // TODO
+    props.update(answer, props.index);
   }
 
   return (
     <div>
       <h3>{question}</h3>
-      {type === 'text' ? <TextQuestion answer={answer} update={updateAnswer} /> : null}
-      {type === 'radio' ? <RadioQuestion answer={answer} choices={props.question.choices} question={question} update={updateAnswer} /> : null}
-      {type === 'checkbox' ? <CheckboxQuestion answer={answer} choices={props.question.choices} question={question} update={updateAnswer} /> : null}
+      {type === 'text' ? <TextQuestion update={updateAnswer} /> : null}
+      {type === 'radio' ? <RadioQuestion choices={props.question.choices} question={question} update={updateAnswer} /> : null}
+      {type === 'checkbox' ? <CheckboxQuestion choices={props.question.choices} question={question} update={updateAnswer} /> : null}
       
     </div>
     

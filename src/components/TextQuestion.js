@@ -5,8 +5,9 @@ function TextQuestion(props) {
   const [answer, setAnswer] = useState('');
 
   const inputChanged = (event) => {
-    setAnswer(event.target.value);
-    props.update(answer);
+    const value = event.target.value;
+    setAnswer(value);
+    props.update(value);
   }
 
   return (
