@@ -5,12 +5,13 @@ import './App.css';
 import DataService from './components/DataService';
 import Survey from './components/Survey';
 import SurveyList from './components/SurveyList';
+import AnswerList from './components/AnswerList';
 
 function App() {
   const [data, setData] = useState([]);
 
   useEffect(() => {
-    DataService.getData("/surveys")
+    DataService.getData("/getsurveys")
       .then(response => response.json())
       .then(data => {
         console.log(data);
@@ -30,6 +31,10 @@ function App() {
           <Route 
             path="/survey/:id"
             render={() => <Survey />}
+          />
+          <Route
+            path="/surveyanswers/:id"
+            render={()=><AnswerList/>}
           />
         </div>
       </Router>
