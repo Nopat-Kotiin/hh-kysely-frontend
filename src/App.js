@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { BrowserRouter as Router, Link, Route } from "react-router-dom";
+import { BrowserRouter as Router, Route } from "react-router-dom";
 
 import './App.css';
 import DataService from './components/DataService';
@@ -34,7 +34,7 @@ function App() {
           />
           <Route
             path="/surveyanswers/:id"
-            render={()=><AnswerList/>}
+            render={()=><AnswerList />}
           />
         </div>
       </Router>
