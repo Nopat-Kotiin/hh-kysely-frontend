@@ -13,7 +13,7 @@ function Survey() {
   const params = useParams();
 
   useEffect(() => {
-    DataService.getData("/survey/" + params.id)
+    DataService.getData("/surveys/" + params.id)
       .then(response => response.json())
       .then(data => {
         setQuestions(data.questions);
