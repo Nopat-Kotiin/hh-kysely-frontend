@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { useParams } from 'react-router';
+import { Redirect, useParams } from 'react-router';
 
 import DataService from './DataService';
 import Question from './Question';
@@ -10,6 +10,7 @@ function Survey() {
   const [answers, setAnswers] = useState([]);
   const [name, setName] = useState("");
   const [info, setInfo] = useState("");
+  const [submitted, setSubmitted] = useState(false);
   const params = useParams();
 
   useEffect(() => {
@@ -38,13 +39,13 @@ function Survey() {
         body.push({'answer': answers[index]});
       }
     });
-    console.log(body);
-    // TODO: 
     DataService.postAnswers(body, '/surveys/1/answers');
+    setSubmitted(true);
   }
 
   return (
     <div>
+      {submitted ? <Redirect to={"/"} /> : null}
       <h2>
         {name}
       </h2>
