@@ -11,7 +11,7 @@ function App() {
   const [data, setData] = useState([]);
 
   useEffect(() => {
-    DataService.getData("/getsurveys")
+    DataService.getData("/surveys")
       .then(response => response.json())
       .then(data => {
         console.log(data);

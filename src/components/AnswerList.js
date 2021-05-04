@@ -9,7 +9,7 @@ function AnswerList() {
     const params = useParams();
   
     useEffect(() => {
-      DataService.getData("/getanswers/" + params.id)
+      DataService.getData("/surveys/" + params.id + "/answers")
         .then(response => response.json())
         .then(data => {
           setQuestions(data.questions);
