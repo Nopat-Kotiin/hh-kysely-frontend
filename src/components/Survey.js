@@ -39,7 +39,7 @@ function Survey() {
         body.push({'answer': answers[index]});
       }
     });
-    DataService.postAnswers(body, '/surveys/1/answers');
+    DataService.postAnswers(body, '/surveys/' + params.id + '/answers');
     setSubmitted(true);
   }
 
