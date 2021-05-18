@@ -17,9 +17,9 @@ function CheckboxStats(props) {
   }, []);
 
   return (
-    <div style={{ width: '65%', height: '300px', margin: 'auto', marginTop: '50px' }}>
+    <div style={{ width: '65%', height: '400px', margin: 'auto', marginTop: '50px' }}>
       <h1>{props.data.question}</h1>
-      <ResponsiveContainer width="100%" height="100%">
+      <ResponsiveContainer width="100%" height="80%">
       <BarChart
         data={chartData}
         margin={{
@@ -30,8 +30,8 @@ function CheckboxStats(props) {
         }}
       >
         <CartesianGrid strokeDasharray="3 3" />
-        <XAxis dataKey="name" />
-        <YAxis label={{ value: 'Valintoja', angle: -90, position: 'insideLeft' }} />
+        <XAxis dataKey="name" tick={{ fill: 'black' }} />
+        <YAxis label={{ value: 'Valintoja', angle: -90, position: 'insideLeft', fill: "black" }} />
         <Tooltip />
         <Bar dataKey="value" fill="#8884d8" />
       </BarChart>

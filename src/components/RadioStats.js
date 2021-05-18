@@ -17,6 +17,10 @@ function RadioStats(props) {
     setChartData(arr);
   }, []);
 
+  const renderBlackLegendText = (value) => {
+    return <span style={{ color: '#000000' }}>{value}</span>;
+  };
+
   return (
     <div style={{ width: '65%', height: '350px', margin: 'auto', marginTop: '50px' }}>
       <h1>{props.data.question}</h1>
@@ -27,18 +31,19 @@ function RadioStats(props) {
             align="right"
             verticalAlign="middle"
             layout="vertical"
+            iconSize={20}
+            formatter={renderBlackLegendText}
           />
           <Pie
             data={chartData}
             innerRadius={100}
             outerRadius={130}
-            fill="#8884d8"
+            fill="000000"
             paddingAngle={5}
             dataKey="value"
-            label
           >
             {chartData.map((_, index) => (
-              <Cell key={`cell-${index}`} fill={COLORS[index % COLORS.length]} />
+              <Cell key={`cell-${index}`} fill={COLORS[index % COLORS.length]} stroke='#000000' />
             ))}
           </Pie>
         </PieChart>
