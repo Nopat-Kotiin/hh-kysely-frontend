@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { Tooltip, ResponsiveContainer, PieChart, Pie, Cell, Legend } from 'recharts';
 
-const COLORS = ['#ff0000', '#cccc00', '#009933', '#0000ff', '#00cc99', '#ff9900', '#333300', '#ff00ff'];
+const COLORS = ['red', 'yellow', 'green', 'orange', 'blue', 'purple', 'pink', 'black'];
 
 function RadioStats(props) {
   const [chartData, setChartData] = useState([]);
