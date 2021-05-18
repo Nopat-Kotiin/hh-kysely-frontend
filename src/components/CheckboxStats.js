@@ -33,7 +33,7 @@ function CheckboxStats(props) {
         <XAxis dataKey="name" tick={{ fill: 'black' }} />
         <YAxis label={{ value: 'Valintoja', angle: -90, position: 'insideLeft', fill: "black" }} />
         <Tooltip />
-        <Bar dataKey="value" fill="#8884d8" />
+        <Bar dataKey="value" fill="#034f84" />
       </BarChart>
       </ResponsiveContainer>
     </div>

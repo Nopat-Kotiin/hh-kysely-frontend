@@ -39,7 +39,6 @@ function RadioStats(props) {
             innerRadius={100}
             outerRadius={130}
             fill="000000"
-            paddingAngle={5}
             dataKey="value"
           >
             {chartData.map((_, index) => (
