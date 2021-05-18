@@ -17,7 +17,7 @@ function CheckboxQuestion(props) {
       newArr = [...answers, value];
       setAnswers(newArr);
     } else {
-      newArr = answers.filter((item) =>  item != value);
+      newArr = answers.filter((item) =>  item !== value);
       setAnswers(newArr);
     }
     props.update(newArr);

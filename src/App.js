@@ -6,6 +6,7 @@ import DataService from './components/DataService';
 import Survey from './components/Survey';
 import SurveyList from './components/SurveyList';
 import AnswerList from './components/AnswerList';
+import Statistics from './components/Statistics';
 
 function App() {
   const [data, setData] = useState([]);
@@ -14,7 +15,6 @@ function App() {
     DataService.getData("/surveys")
       .then(response => response.json())
       .then(data => {
-        console.log(data);
         setData(data);
       })
       .catch(error => {
@@ -30,11 +30,15 @@ function App() {
           <Route exact path="/" render={() => <SurveyList data={data} />} />
           <Route 
             path="/survey/:id"
-            render={() => <Survey />}
+            component={Survey}
           />
           <Route
             path="/surveyanswers/:id"
-            render={()=><AnswerList />}
+            component={AnswerList}
+          />
+          <Route
+            path="/surveystatistics/:id"
+            component={Statistics}
           />
         </div>
       </Router>
