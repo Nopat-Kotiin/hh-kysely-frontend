@@ -17,7 +17,7 @@ function RadioQuestion(props) {
   return (
     <div onChange={inputChanged}>
       {choices.map((choice, index) => {
-        return(<p><input type="radio" value={index} name={question} />{choice}</p>)
+        return(<p key={choice} ><input type="radio" value={index} name={question} />{choice}</p>)
       })}
     </div> 
   );

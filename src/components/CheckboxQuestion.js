@@ -26,7 +26,7 @@ function CheckboxQuestion(props) {
   return (
     <div onChange={inputChanged}>
       {choices.map((choice, index) => {
-        return (<p><input type="checkbox" value={index} name={question} />{choice}</p>)
+        return (<p key={choice} ><input type="checkbox" value={index} name={question} />{choice}</p>)
       })}
     </div>
   );

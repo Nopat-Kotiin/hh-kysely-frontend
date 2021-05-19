@@ -32,13 +32,36 @@ function Survey() {
 
   const submitAnswers = () => {
     const body = [];
+    let invalidInputs = [];
     questions.forEach((q, index) => {
+      const answer = answers[index];
+      if (answer === undefined) {
+        invalidInputs.push(q.question);
+        return;
+      }
+
       if (q.type !== 'text') {
-        body.push({'answer': '', 'selections': answers[index]});
+        if (answer.length === 0) {
+          invalidInputs.push(q.question);
+          return;
+        }
+        body.push({ 'answer': '', 'selections': answer });
       } else {
-        body.push({'answer': answers[index]});
+        if (answer.trim() === "") {
+          invalidInputs.push(q.question);
+          return;
+        }
+        body.push({ 'answer': answer });
       }
     });
+    if (invalidInputs.length > 0) {
+      alert(
+        "Olkaa hyvä ja vastatkaa kaikkiin kysymyksiin.\n"
+        + "Seuraavat kysymykset ovat vastaamatta:\n\n"
+        + invalidInputs.join("\n")
+      );
+      return;
+    }
     DataService.postAnswers(body, '/surveys/' + params.id + '/answers');
     setSubmitted(true);
   }
@@ -53,9 +76,9 @@ function Survey() {
         {info}
       </div>
       {questions.map((question, index) => {
-        return(<Question question={question} index={index} update={updateAnswers}/>)
+        return (<Question key={question.id} question={question} index={index} update={updateAnswers} />)
       })}
-      <button onClick={submitAnswers}>submit</button>
+      <button onClick={submitAnswers}>Lähetä</button>
     </div>
   )
 }
